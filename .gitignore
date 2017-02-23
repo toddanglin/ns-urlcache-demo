@@ -1,0 +1,9 @@
+lib/
+node_modules/
+platforms/
+hooks/
+.DS_Store
+
+#Ignore JS files compiled by TypeScript
+app/**/*.js
+app/**/*.js.map
