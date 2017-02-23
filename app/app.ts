@@ -6,6 +6,15 @@ purpose of the file is to pass control to the app’s first module.
 
 import "./bundle-config";
 import * as app from 'application';
+import { isIOS } from 'platform';
+
+app.on(app.launchEvent, (context) => {
+    if(isIOS) {
+        // Disable iOS URL Cache
+        let cachePolicy = NSURLCache.alloc().initWithMemoryCapacityDiskCapacityDiskPath(0, 0,"nsurlcache")
+        NSURLCache.sharedURLCache=cachePolicy;
+    }
+});
 
 app.start({ moduleName: 'main-page' });
 
